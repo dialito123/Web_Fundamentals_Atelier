@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Horloge temps réel{% endblock %}
+
+{% block content %}
+    <h1>Il est <span id="heure">...</span></h1>
+    <p id="message"></p>
+
+    <script>
+        // Ce code s'exécute dans le NAVIGATEUR, pas sur le serveur
+        async function mettreAJour() {
+            const reponse = await fetch("/api/heure");   // envoie une requête à l'API
+            const donnees = await reponse.json();         // lit le JSON reçu
+            document.getElementById("heure").textContent = donnees.heure;
+            document.getElementById("message").textContent = donnees.message;
+        }
+        mettreAJour();
+        setInterval(mettreAJour, 1000);  // relance la requête toutes les secondes
+    </script>
+{% endblock %}
