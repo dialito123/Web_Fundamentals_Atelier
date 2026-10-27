@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Présentation</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Présentation{% endblock %}
+
+{% block content %}
     <h1>{{ prenom }} {{ nom }}</h1>
     <p>Je suis étudiant(e) en <strong>deuxième année d'informatique</strong>.</p>
     <h2>Mes loisirs</h2>
@@ -14,5 +11,4 @@
         <li>{{ loisir }}</li>
     {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
