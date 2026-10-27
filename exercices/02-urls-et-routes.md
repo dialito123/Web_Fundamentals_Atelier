@@ -21,7 +21,7 @@ Côté serveur, Flask associe chaque **chemin** à une fonction Python. C'est ce
    ```python
    @app.get("/presentation")
    def presentation():
-       return "Je m'appelle Léa et je suis étudiante en informatique."
+       return "Je m'appelle Harris et je suis étudiante en informatique."
    ```
    ⚠️ Respectez bien les **4 espaces** au début de la ligne `return` : en Python, c'est important !
 2. Faites un *commit*, attendez le ✅, puis visitez `https://votre-username.pythonanywhere.com/presentation`.
