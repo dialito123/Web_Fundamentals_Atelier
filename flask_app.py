@@ -8,7 +8,6 @@
 #  Les consignes sont dans le dossier "exercices/".
 # ---------------------------------------------------------------
 from flask import Flask, render_template
-from flask import Flask
 
 app = Flask(__name__)
 
