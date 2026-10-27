@@ -41,6 +41,17 @@ def calcul():
     else:
         return f"{a} + {b} = {a + b}"
 
+@app.get("/formulaire")
+def formulaire():
+    return render_template("formulaire.html")
+
+
+@app.get("/salut")
+def salut():
+    prenom = request.args.get("prenom", "inconnu")
+    ville = request.args.get("ville", "nulle part")
+    return f"Bonjour {prenom}, qui vient de {ville} !"
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
