@@ -17,7 +17,7 @@ app = Flask(__name__)
 # Flask exécute la fonction accueil() et renvoie son résultat au navigateur.
 @app.get("/")
 def accueil():
-    return "Bienvenue sur le site de Dialito 🚀"
+    return render_template("accueil.html")
 
 
 # ---------------------------------------------------------------
