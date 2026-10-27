@@ -20,6 +20,19 @@ app = Flask(__name__)
 def accueil():
     return "Bienvenue sur le site de Dialito 🚀"
 
+# Première route
+@app.route('/')
+def index():
+    return "Page d'accueil"
+
+# Deuxième route avec le MÊME nom de fonction
+@app.route('/contact')
+def index():
+    return "Page de contact"
+
+if __name__ == '__main__':
+    app.run()
+
 
 # ---------------------------------------------------------------
 #  Ajoutez vos nouvelles routes ci-dessous 👇
