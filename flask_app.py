@@ -25,17 +25,12 @@ def accueil():
 # ---------------------------------------------------------------
 @app.get("/presentation")
 def presentation():
-    return render_template("presentation.html", prenom="ABDOUL", nom="DIALLO")
-    <h1>HARRIS</h1>
-    <p>Je suis étudiante en <strong>2 année d'informatique</strong>.</p>
-    <h2>Ce que j'aime</h2>
-    <ul>
-        <li>Les jeux vidéo</li>
-        <li>La musique</li>
-        <li>Le code (bientôt !)</li>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" width="100">
-    </ul>
-    """
+    return render_template(
+        "presentation.html",
+        prenom="Harris",
+        nom="Diallo",
+        loisirs=["Jeux vidéo", "Musique", "Réseaux / Sécurité"]
+    )
 
 # ---------------------------------------------------------------
 #  Ne pas modifier : utile seulement pour lancer le site
