@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Ce que je sais de vous{% endblock %}
+
+{% block content %}
+    <h1>Ce que je sais de vous 🔍</h1>
+    <p><strong>Votre adresse IP :</strong> {{ ip }}</p>
+    <p><strong>Votre navigateur :</strong> {{ navigateur }}</p>
+    <p><strong>Vos langues :</strong> {{ langues }}</p>
+
+    <h2>Tous les en-têtes reçus</h2>
+    <ul>
+    {% for nom, valeur in entetes %}
+        <li><strong>{{ nom }}</strong> : {{ valeur }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
