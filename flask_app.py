@@ -14,7 +14,7 @@ def presentation():
         "presentation.html",
         prenom="Harris",
         nom="Diallo",
-        loisirs=["Jeux vidéo", "Musique", "Réseaux / Sécurité"]
+        loisirs=["Jeux vidéo", "Musique", "Réseaux / Sécurité"],
     )
 
 
@@ -30,27 +30,47 @@ def calcul():
         a = int(request.args.get("a", 0))
         b = int(request.args.get("b", 0))
     except ValueError:
-        return "Erreur : les paramètres 'a' et 'b' doivent être des nombres entiers.", 400
+        return (
+            "Erreur : les paramètres 'a' et 'b' doivent être des nombres entiers.",
+            400,
+        )
 
     if op == "fois":
         return f"{a} × {b} = {a * b}"
     elif op == "moins":
         return f"{a} - {b} = {a - b}"
     elif op == "div":
-        return f"{a} ÷ {b} = {a / b}" if b != 0 else "Erreur : division par zéro impossible."
+        return (
+            f"{a} ÷ {b} = {a / b}"
+            if b != 0
+            else "Erreur : division par zéro impossible."
+        )
     else:
         return f"{a} + {b} = {a + b}"
 
+
+# --- Exercice 8 : Formulaires (GET et POST) ---
 @app.get("/formulaire")
 def formulaire():
     return render_template("formulaire.html")
 
 
-@app.get("/salut")
+@app.route("/salut", methods=["GET", "POST"])
 def salut():
-    prenom = request.args.get("prenom", "inconnu")
-    ville = request.args.get("ville", "nulle part")
-    return f"Bonjour {prenom}, qui vient de {ville} !"
+    if request.method == "POST":
+        prenom = request.form.get("prenom", "inconnu")
+        ville = request.form.get("ville", "nulle part")
+        couleur = request.form.get("couleur", "black")
+    else:
+        prenom = request.args.get("prenom", "inconnu")
+        ville = request.args.get("ville", "nulle part")
+        couleur = request.args.get("couleur", "black")
+
+    return f"""
+    <h1 style="color: {couleur};">Bonjour {prenom}, qui vient de {ville} !</h1>
+    <p>Données reçues en méthode <strong>{request.method}</strong>.</p>
+    <p><a href="/formulaire">Retour au formulaire</a></p>
+    """
 
 
 if __name__ == "__main__":
