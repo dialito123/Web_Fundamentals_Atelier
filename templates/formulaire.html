@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Formulaire</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Formulaire{% endblock %}
+
+{% block content %}
     <h1>Faisons connaissance</h1>
     <form action="/salut" method="post">
-        <label>Votre prénom : <input type="text" name="prenom"></label>
-        <label>Votre ville : <input type="text" name="ville"></label>
+        <p>
+            <label>Votre prénom : <input type="text" name="prenom" required></label>
+        </p>
+        <p>
+            <label>Votre ville : <input type="text" name="ville" required></label>
+        </p>
+        <p>
+            <label>Couleur préférée :
+                <select name="couleur">
+                    <option value="tomato">Rouge</option>
+                    <option value="teal">Vert</option>
+                    <option value="royalblue">Bleu</option>
+                </select>
+            </label>
+        </p>
         <button type="submit">Envoyer</button>
     </form>
-</body>
-</html>
+{% endblock %}
