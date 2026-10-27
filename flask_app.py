@@ -26,8 +26,16 @@ def accueil():
 # ---------------------------------------------------------------
 @app.get("/presentation")
 def presentation():
-    return "Je m'appelle Harris et je suis étudiante en informatique."
-
+    return """
+    <h1>HARRIS</h1>
+    <p>Je suis étudiante en <strong>première année d'informatique</strong>.</p>
+    <h2>Ce que j'aime</h2>
+    <ul>
+        <li>Les jeux vidéo</li>
+        <li>La musique</li>
+        <li>Le code (bientôt !)</li>
+    </ul>
+    """
 
 # ---------------------------------------------------------------
 #  Ne pas modifier : utile seulement pour lancer le site
