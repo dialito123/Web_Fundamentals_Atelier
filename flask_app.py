@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request, redirect, abort
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from flask import Flask, abort, jsonify, redirect, render_template, request
 
 app = Flask(__name__)
 
@@ -101,6 +104,21 @@ def moi():
         langues=request.headers.get("Accept-Language"),
         entetes=request.headers,
     )
+
+# --- Exercice 11 : API et Horloge dynamique ---
+@app.get("/api/heure")
+def api_heure():
+    maintenant = datetime.now(ZoneInfo("Europe/Paris"))
+    return jsonify({
+        "heure": maintenant.strftime("%H:%M:%S"),
+        "date": maintenant.strftime("%d/%m/%Y"),
+        "message": "Bonjour depuis mon API !",
+    })
+
+
+@app.get("/horloge")
+def horloge():
+    return render_template("horloge.html")
 
 
 if __name__ == "__main__":
